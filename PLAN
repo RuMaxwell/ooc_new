@@ -1,0 +1,78 @@
+OOC KERNEL
+
+- Object module         <new.h>
+- Interface module      <interface.h>
+- Exception module      <throw.h>
+- Smart pointer module  <sp.h>
+
+
+Relationship
+
+<sp.h>      <throw.h>
+    \         /
+     \       /
+   <interface.h>
+         |
+      <new.h>
+
+
+Module structure
+
+sp.h {
+    structs {
+        owner
+        shared_ptr
+        weak_ptr
+        unique_ptr
+        auto_ptr
+        ? async_shared
+        ? mutex
+    }
+    macros & functions {
+        [constructors]
+        [destructors]
+        void* deref(void* sp)
+    }
+}
+
+throw.h {
+    macros {
+        try
+        catch
+        finally
+        throw
+    }
+}
+
+interface.h {
+    structs {
+        interface (descriptor, trivial struct)
+    }
+}
+
+new.h {
+    structs {
+        class (object meta, type descriptor)
+    }
+    macros & functions {
+        void*       new         (void* type, ...)
+        void        delete      (void* this)
+        class*      typeof      (void* this)
+        const char* typename    (void* this)
+        int         instanceof  (void* this, class* type)
+        int         implements  (void* this, interface* i)
+
+        [class interface]
+        const char* default_repr(void* this)
+    }
+}
+
+
+class {
+    void*   (*constr)   (void* raw)
+    void*   (*destr)    (void* this)
+    char*   (*repr)     (void* this)
+    
+    const char* (*name)
+    interface*  implements[]
+}
