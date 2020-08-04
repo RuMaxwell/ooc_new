@@ -63,7 +63,6 @@ new.h {
         int         implements  (void* this, interface* i)
 
         [class interface]
-        const char* default_repr(void* this)
     }
 }
 
@@ -71,8 +70,8 @@ new.h {
 class {
     void*   (*constr)   (void* raw)
     void*   (*destr)    (void* this)
-    char*   (*repr)     (void* this)
     
-    const char* (*name)
-    interface*  implements[]
+    size_t size
+    char* name
+    interface*  implements
 }

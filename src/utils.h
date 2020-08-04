@@ -13,6 +13,8 @@
 /* type annotators */
 // any pointer type
 #define Ptr(Type) void*
+// any pointer constant type
+#define Const(T) void const*
 
 #define bool int
 #define false ((bool)0)
