@@ -1,10 +1,10 @@
 #include "show.h"
 
-char* show(Ptr(T) this) {
-    class** p = this;
-    class* c = (*p)->implements;
-
-    for (size_t i = 0; i < c->interface_count; i++) {
-        interface_id** iipp = c->implements[i];
+char* show(void* this) {
+    Show_object s = get_interface(this, Show_id);
+    if (s) {
+        return s->show(this);
+    } else {
+        panicf("object class doesn't implement `Show` interface");
     }
 }

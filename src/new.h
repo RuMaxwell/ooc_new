@@ -23,11 +23,11 @@ struct class {
     void* (*destr)(void* this);
 };
 
-Ptr(type)   new         (class* type, ...);
-void        delete      (Ptr(T) this);
-class*      type_of     (Ptr(T) this);
-const char* typename    (Ptr(T) this);
-bool        instanceof  (Ptr(T) this, class* type);
-bool        implements  (Ptr(T) this, Ptr(interface) i);
+Ptr(type)       new             (class* type, ...);
+void            delete          (Ptr(T) this);
+class*          type_of         (Ptr(T) this);
+const char*     typename        (Ptr(T) this);
+bool            instanceof      (Ptr(T) this, class* type);
+Ptr(interface)  get_interface   (Ptr(T) this, interface_id* i);
 
 #endif

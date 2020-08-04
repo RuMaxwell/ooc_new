@@ -31,14 +31,16 @@ bool instanceof(void* this, class* type) {
     return *p == type;
 }
 
-bool implements(void* this, void* _interface) {
+void* get_interface(void* this, interface_id* i) {
     class** p = this;
     class* c = *p;
+
     for (size_t i = 0; i < c->interface_count; i++) {
-        interface_id** ii = c->implements[i];
-        if (c->implements[i] == _interface) {
-            return true;
+        interface_id** iipp = c->implements[i];
+        if (*iipp == i) {
+            return iipp;
         }
     }
-    return false;
+
+    return NULL;
 }
