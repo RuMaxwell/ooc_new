@@ -5,10 +5,14 @@ void* new(class* type, ...) {
     va_start(ap, type);
 
     class** p = calloc(1, type->size);
+    *p = type;
     return (*p)->constr(p, &ap);
 }
 
 void delete(void* this) {
+    if (!this) {
+        panicf("deleting null pointer");
+    }
     class** p = this;
     p = (*p)->destr(this);
     if (p) {
@@ -35,8 +39,8 @@ void* get_interface(void* this, interface_id* i) {
     class** p = this;
     class* c = *p;
 
-    for (size_t i = 0; i < c->interface_count; i++) {
-        interface_id** iipp = c->implements[i];
+    for (INod* n = c->implements; n; n = n->next) {
+        interface_id** iipp = n->interface;
         if (*iipp == i) {
             return iipp;
         }

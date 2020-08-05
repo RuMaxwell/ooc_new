@@ -1,0 +1,12 @@
+.vscode
+.vscode/*
+build
+*.out
+*.exe
+*.o
+temp
+temp.*
+*.temp
+**/temp
+**/temp.*
+**/*.temp

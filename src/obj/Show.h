@@ -5,17 +5,17 @@
 #include "../new.h"
 #include "../throw.h"
 
+typedef struct Show_proto Show;
 struct Show_proto {
     interface_id* id;
-    char* (*show)(Ptr(T) this);
+    char* (*show)(Obj(T) this);
 };
 
 // interface pointer actually stored in class
-typedef struct Show_proto* Show_object;
+typedef Show* Show_object;
 
-interface_id _Show_id = {};
-interface_id* Show_id = &_Show_id;
+interface_id Show_id;
 
-char* show(Ptr(T) this);
+char* show(Obj(T) this);
 
 #endif

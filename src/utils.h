@@ -12,7 +12,7 @@
 
 /* type annotators */
 // any pointer type
-#define Ptr(Type) void*
+#define Obj(Type) void*
 // any pointer constant type
 #define Const(T) void const*
 

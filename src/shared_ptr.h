@@ -3,6 +3,7 @@
 #define _OOC_SHARED_PTR_H_
 
 #include "utils.h"
+#include "sp_pre.h"
 
 #include <malloc.h>
 #include <stdio.h>
@@ -16,7 +17,7 @@ struct shared_ptr;
 typedef struct weak_ptr weak_ptr;
 struct weak_ptr;
 
-SharedPtr(T) new_shared(Ptr(T) ptr, disposer ptr_disposer);
+SharedPtr(T) new_shared(Obj(T) ptr, disposer ptr_disposer);
 
 SharedPtr(T) shared_ref(SharedPtr(T) sp);
 

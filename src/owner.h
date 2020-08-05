@@ -3,6 +3,7 @@
 #define _OOC_OWNER_PTR_H_
 
 #include "utils.h"
+#include "sp_pre.h"
 
 #include <malloc.h>
 #include <stdio.h>
@@ -15,7 +16,7 @@
 typedef struct owner owner;
 struct owner;
 
-Owner(T) own(Ptr(T) raw_ptr, bool readonly _Default_(false), disposer ptr_disposer _Nullable_ _Default_(default_disposer));
+Owner(T) own(Obj(T) raw_ptr, bool readonly _Default_(false), disposer ptr_disposer _Nullable_ _Default_(default_disposer));
 
 void delete_owner(Owner(T) o);
 

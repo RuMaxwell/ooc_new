@@ -2,6 +2,10 @@
 
 #include "throw.h"
 
+void default_disposer(void* ptr) {
+    free(ptr);
+}
+
 typedef void* (*dereferencer)(void*);
 
 /************** owner **************/
@@ -152,7 +156,7 @@ void* auto_ptr_deref(void* ap) {
 }
 
 int auto_ptr_hash(void* ptr) {
-    return (int)ptr % AUTO_PTR_TABLE_SIZE;
+    return (int)(long)ptr % AUTO_PTR_TABLE_SIZE;
 }
 
 static auto_ptr* lookup(void* ptr) {
